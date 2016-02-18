@@ -53,9 +53,15 @@ namespace UMA
 		/// <param name="asset">Asset.</param>
 		public OverlayData(OverlayDataAsset asset)
 		{
-			this.asset = asset;
-			this.colorData = new OverlayColorData(asset.material.channels.Length);
-			this.rect = asset.rect;
+            if (asset != null)
+            {
+                this.asset = asset;
+                if (asset.material != null)
+                {
+                    this.colorData = new OverlayColorData(asset.material.channels.Length);
+                }
+                this.rect = asset.rect;
+            }
 		}
 
 		[System.Obsolete("useAdvancedMasks is obsolete, from now on we ALWAYS use advanced masks. Reduces code complexity.", false)]
